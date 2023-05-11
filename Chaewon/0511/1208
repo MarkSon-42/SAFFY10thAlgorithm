@@ -12,7 +12,7 @@ public class Main {
             int dump = in.nextInt();
             box = new int[100];
 
-            for (int i = 0; i < 100; i++) { // 배열 크기만큼 박스 채우기
+            for (int i = 0; i < box.length; i++) {
                 box[i] = in.nextInt();
             }
 
