@@ -19,8 +19,8 @@ public class Main {
             Arrays.sort(box); //오른차순 정렬
 
             for (int i = 0; i < dump; i++) {
-                box[99]--;
-                box[0]++;
+                box[99] -= 1;
+                box[0] += 1;
                 Arrays.sort(box);
             }
 
