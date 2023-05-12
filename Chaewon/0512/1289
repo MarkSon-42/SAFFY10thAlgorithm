@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+
+        int TC = in.nextInt();
+        in.nextLine(); // 개행문자 읽기(버퍼 지우기)
+
+        for (int tc = 1; tc <= TC; tc++) {
+            String s = in.nextLine();
+
+            //받은 문자열의 길이만큼 배열 생성
+            int arr[] = new int[s.length()];
+
+            for (int i = 0; i < s.length(); i++) {
+                //받아온 문자열 정수로 변환
+                arr[i] = s.charAt(i) - '0';
+            }
+
+            int count = 0;
+
+            //시작 부분이 1이면 초기에 메모리를 1로 세팅한것으로 카운트 1로 초기화
+            if (arr[0] == 1) {
+                count = 1;
+            }
+
+            //자신의 수와 다음에 위치한 수가 다르면 메모리를 변경한 것 카운트 세기
+            for (int i = 0; i < s.length() - 1; i++) {
+                if (arr[i] != arr[i + 1]) {
+                    count++;
+                }
+            }
+
+            System.out.printf("#%d %d\n", tc, count);
+        }
+
+    }
+}
