@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        for (int t = 1; t <= 10; t++) {
+            int n = sc.nextInt();
+
+            char[][] arr = new char[100][100];
+
+            // 입력 받기
+            for (int i = 0; i < 100; i++) {
+                String str = sc.next();
+                for (int j = 0; j < 100; j++) {
+                    arr[i][j] = str.charAt(j);
+                }
+            }
+
+            int maxLen = 0;
+
+            // 가로 회문 찾기
+            //brute-force 알고리즘 사용
+            //1열부터 100열까지 한 열당 [0,0]과 [0,0] 부터 [0,99]까지 비교해서 최대길이 찾기
+            for (int i = 0; i < 100; i++) {
+                for (int j = 0; j < 100; j++) {
+                    //회문 최대길이가 100이라서 100-j까지 돌기
+                    for (int len = 1; len <= 100 - j; len++) {
+                        boolean isPalindrome = true;
+                        for (int k = 0; k < len / 2; k++) {
+                            if (arr[i][j + k] != arr[i][j + len - 1 - k]) {
+                                isPalindrome = false;
+                                break;
+                            }
+                        }
+                        //나온 회문부터 계속 저장해가며 최대길이의 회문 저장
+                        if (isPalindrome && len > maxLen) {
+                            maxLen = len;
+                        }
+                    }
+                }
+            }
+
+            // 세로 회문 찾기
+            //행열 반대로 찾기
+            for (int j = 0; j < 100; j++) {
+                for (int i = 0; i < 100; i++) {
+                    for (int len = 1; len <= 100 - i; len++) {
+                        boolean isPalindrome = true;
+                        for (int k = 0; k < len / 2; k++) {
+                            if (arr[i + k][j] != arr[i + len - 1 - k][j]) {
+                                isPalindrome = false;
+                                break;
+                            }
+                        }
+                        if (isPalindrome && len > maxLen) {
+                            maxLen = len;
+                        }
+                    }
+                }
+            }
+
+            System.out.println("#" + t + " " + maxLen);
+        }
+
+        sc.close();
+    }
+}
