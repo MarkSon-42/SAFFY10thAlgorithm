@@ -12,12 +12,14 @@ public class Main {
             int dump = in.nextInt();
             box = new int[100];
 
+            //box 배열 입력받기
             for (int i = 0; i < box.length; i++) {
                 box[i] = in.nextInt();
             }
 
-            Arrays.sort(box); //오른차순 정렬
+            Arrays.sort(box); //오름차순 정렬
 
+            //덤프 수 만큼 최고점에서 최저점으로 수 옮기고 다시 재정렬
             for (int i = 0; i < dump; i++) {
                 box[99] -= 1;
                 box[0] += 1;
