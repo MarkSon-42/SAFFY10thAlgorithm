@@ -23,5 +23,4 @@ for test_case in range(1, T + 1):
                             sub_sum += farm[i+x][j+y]
                 if sub_sum > max_sum:
                     max_sum = sub_sum
-
     print("#{} {}".format(test_case, max_sum))  # 결과 출력
