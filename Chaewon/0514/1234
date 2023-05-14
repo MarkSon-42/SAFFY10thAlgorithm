@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    //1234
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        for(int tc = 1; tc<=10; tc++){
+            Stack<Character> stack = new Stack<>();
+            int num = in.nextInt();
+            String st = in.next();
+            String result = "";
+
+            for(int i =0; i<num; i++){
+                char cur = st.charAt(i);
+
+                //스택이 비어있거나 조회한 스택과 다른 문자면 push
+                if(stack.isEmpty() || cur != stack.peek()){
+                    stack.push(cur);
+                }
+                //조회한 스택이 현재 문자와 같다면 데이터 삭제
+                else {
+                    stack.pop();
+                }
+            }
+
+            //스택 내용물 전부 출력
+            while (!stack.isEmpty()){
+                result += stack.pop();
+            }
+
+            //뒤집어서 출력
+            StringBuffer sb = new StringBuffer(result);
+
+            System.out.println("#" + tc + " " + sb.reverse().toString());
+        }
+        in.close();
+    }
+}

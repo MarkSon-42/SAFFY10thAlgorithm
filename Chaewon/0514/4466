@@ -1,0 +1,33 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    //4466
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int TC = in.nextInt();
+
+        for (int tc = 1; tc <= TC; tc++) {
+            int N = in.nextInt();
+            int K = in.nextInt();
+
+            int arr[] = new int[N];
+
+            //N개 크기의 배열 받기
+            for (int i = 0; i < N; i++) {
+                arr[i] = in.nextInt();
+            }
+            //오름차순
+            Arrays.sort(arr);
+
+            int result = 0;
+            //오름차순이므로 뒤에서 부터 N 개 만큼 더하기
+            for (int i = N-1; i >= N-K; i--) {
+                result += arr[i];
+            }
+            System.out.println("#" + tc + " " + result);
+        }
+    }
+}
