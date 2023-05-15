@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Solution {
     //3282
-    //구글링
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int testNum = sc.nextInt();
@@ -11,15 +10,18 @@ public class Solution {
             int n = sc.nextInt();
             int k = sc.nextInt();
 
+            //각 물건 부피, 가치 저장할 공간 인덱스 0 사용 x
             int[][] object = new int[n + 1][2];
+            //동적 계획법을 위한 배열 선언
             int[][] dp = new int[n + 1][k + 1];
 
+            //물건의 부피와 가치 저장
             for (int i = 1; i <= n; i++) {
                 object[i][0] = sc.nextInt(); // 물건의 부피
                 object[i][1] = sc.nextInt(); // 물건의 가치
             }
 
-            // 아무것도 넣지 않은 경우
+            // 아무것도 넣지 않은 경우, 첫 행을 0으로 초기화
             for (int i = 0; i <= k; i++) {
                 dp[0][i] = 0;
             }
@@ -30,8 +32,10 @@ public class Solution {
                 for (int j = 0; j <= k; j++) {
                     // 가방에 넣을 수 없는 경우
                     if (object[i][0] > j)
+                        //이전 단계가 최대 가치
                         dp[i][j] = dp[i - 1][j];
-                    else
+                    else // 넣을 수 있는 경우
+                    // 이전 단계의 최대 가치와 현재 물건을 넣었을때 가치를 비교하여 큰 값을 선택
                         dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - object[i][0]] + object[i][1]);
                 }
             }
