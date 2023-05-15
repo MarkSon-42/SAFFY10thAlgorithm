@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    //14692 통나무 자르기 
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+
+        int N = in.nextInt();
+
+        // 홀수 짝수만 구별하면 되는 문제
+        for(int i = 0; i< N; i++){
+            int M = in.nextInt();
+            String result = "";
+            if(M%2==0){
+                result = "Alice";
+            }else
+                result = "Bob";
+
+            System.out.println("#" + (i+1) + " " + result);
+        }
+
+
+    }
+}
