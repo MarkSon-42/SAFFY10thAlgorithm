@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+//1244 최대 상금
+//dfs 알고리즘
+
+public class MainTest {
+    static String[] arr;
+    static int max, chance;
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int T = in.nextInt();
+        for (int tc = 1; tc <= T; tc++) {
+            arr = in.next().split("");
+            chance = in.nextInt();
+
+            max = 0;
+            // 시간초과 최적화
+            if (arr.length < chance) {    // swap 횟수가 자릿수보다 클 때
+                chance = arr.length;    // 자릿수만큼만 옮겨도 전부 옮길 수 있음
+            }
+            dfs(0, 0);
+            System.out.println("#" + tc + " " + max);
+        }
+    }
+
+    static void dfs(int start, int cnt) {
+        if (cnt == chance) {
+            //현재까지 배열을 문자열로 변환하여 결과를 저장할 변수 선언
+            String result = "";
+            //배열의 모든 요소를 순회하며 문자열에 추가
+            for (String s : arr)
+                result += s;
+            //현재 숫자 문자열을 정수로 반환하여 max 값과 비교하여 갱신
+            max = Math.max(max, Integer.parseInt(result));
+
+            return;
+        }
+        //arr 배열의 모든 가능한 조합 순회
+        for (int i = start; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                //arr 배열의 요소 순서를 변화 시키는 모든 가능한 조합 생성
+                String temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+
+                //재귀를 통해 새로운 배열의 다음 단계 순회
+                dfs(i, cnt + 1);
+                temp = arr[i];
+                //요소 순서 되돌리기
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
