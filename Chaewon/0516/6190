@@ -39,7 +39,7 @@ public class Main {
     //단조 증가 확인 함수
     static boolean isMonoIncreasing(int num) {
         int q, r, cur;
-        //최댓값의 초기값을 9로 설정 ??..
+        //2자리 수여야 하므로 9로 설정
         cur = 9;
         //수를 오른쪽부터 확인하면서 cur보다 큰 수가 나타나면 단조 증가가 아니므로 false 반환
         for (q = num; q > 0; q /= 10) {
