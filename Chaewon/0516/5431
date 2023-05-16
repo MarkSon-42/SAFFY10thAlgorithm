@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Main2 {
+    // 5431 민석이의 과제 체크
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int T = in.nextInt();
+
+        for(int tc = 1; tc <= T; tc++){
+            int N = in.nextInt();
+            int arr[] = new int[N];
+            int M = in.nextInt();
+            
+            //제출한 사람 입력받기
+            for(int i = 0; i< M; i++){
+                int K = in.nextInt();
+                arr[K-1] = K;
+            }
+            
+            System.out.print("#" + tc + " ");
+            // 제출하지 않은 사람( 배열에서 0인 부분)의 인덱스 값을 출력
+            for(int i =0; i<N; i++){
+                if(arr[i] ==0){
+                    System.out.print((i+1) + " " );
+                }
+            }
+            //각 테스크 케이스 사이 개행문자 추가
+            System.out.println();
+        }
+    }
+}
