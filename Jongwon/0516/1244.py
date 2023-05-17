@@ -1,8 +1,6 @@
 # 1244. 최대 상금
-
 # dfs, 백트래킹, 딕셔너리 사용하였고 처음에는 시간 초과로 인해 실패하다가 중복 되는 과정을 없애기 위해서 가지치기 방법을 구글링을 통해 참고하여 해결 하였습니다.
 # 경우의 수를 만들어 dfs 방식으로 탐색하며 최댓값을 계속 갱신해서 최대 교환 횟수에 오면 금액 최댓값을 반환하는 방식
-
 
 def dfs(change):
     global max_money 
@@ -19,7 +17,6 @@ def dfs(change):
                 visited[(changed, change)] = 0 # 방문을 하면 0으로 바꿔 다음에 다시 방문하지 않게 처리 (방문했던 곳 중복 방지)
                 dfs(change+1) # 바꾼 횟수 +1해서 dfs 다시 호출
             num_table[i], num_table[j] = num_table[j], num_table[i] # 다른 경로 탐색을 위해 다시 i, j 돌려놓기
-
 
 T = int(input())
 for test_case in range(1, T + 1):
