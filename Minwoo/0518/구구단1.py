@@ -11,5 +11,4 @@ for i in range(TC):
         answer = "Yes"
     else:
         answer = "No"
-
     print("#{} {}".format(i + 1, answer))
